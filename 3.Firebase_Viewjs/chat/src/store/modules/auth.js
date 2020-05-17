@@ -25,20 +25,24 @@ const authStore = {
     },
   },
   actions: {
-    setIsLogedIn: {
+    setIsLoggedInState: {
       handler({ commit }, bool) {
         commit(IS_LOGGED_IN, bool);
       },
       root: true,
     },
-    async login({ commit }, { email, password }) {
+    async login({ commit, dispatch }, { email, password }) {
       console.log(email, password);
       try {
         commit(LOGIN_LOADER, true);
         const res = await firebaseLogin(email, password);
         console.log(res);
       } catch (e) {
-        console.log(e);
+        dispatch(
+          'loadMessage',
+          { type: 'error', title: 'Error', message: e.message },
+          { root: true },
+        );
       } finally {
         commit(LOGIN_LOADER, false);
       }
