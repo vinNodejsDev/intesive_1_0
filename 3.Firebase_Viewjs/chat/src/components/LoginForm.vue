@@ -3,6 +3,8 @@
         <ElForm
             :model="formData"
             :rules="rules"
+            @submit.native="onSubmit"
+            ref="loginForm"
         >
             <ElFormItem
                 label="Email"
@@ -23,6 +25,7 @@
                 plain
                 size="small"
                 native-type="submit"
+                :loading="loginInProgress"
             >
                 Log In
             </ElButton>
@@ -31,6 +34,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'LoginForm',
   data: () => ({
@@ -60,6 +65,19 @@ export default {
       ],
     },
   }),
+  computed: {
+    ...mapGetters('auth', ['loginInProgress']),
+  },
+  methods: {
+    ...mapActions('auth', ['login']),
+    onSubmit(e) {
+      e.preventDefault();
+      this.$refs.loginForm.validate((isValid) => {
+        if (!isValid) return;
+        this.login({ ...this.formData });
+      });
+    },
+  },
 };
 </script>
 

@@ -1,6 +1,5 @@
- import firebase from 'firebase';
- import config from './config';
+import firebase from 'firebase';
 import firebaseConfig from './config';
 
- firebase.initializeApp(config);
- export default firebase;
+firebase.initializeApp(firebaseConfig);
+export default firebase;
