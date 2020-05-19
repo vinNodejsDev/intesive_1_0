@@ -17,3 +17,30 @@ export const firebaseLogout = async () => {
     return Promise.reject(err);
   }
 };
+
+export const firebaseSignUp = async (email, password) => {
+  try {
+    const data = await firebase.auth().createUserWithEmailAndPassword(email, password);
+    return data;
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};
+
+export const firebaseResetPassword = async (email) => {
+  try {
+    const data = firebase.auth().sendPasswordResetEmail(email);
+    return data;
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};
+
+export const getUserIdToken = async () => {
+  try {
+    const token = await firebase.auth().currentUser.getIdToken();
+    return token;
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};

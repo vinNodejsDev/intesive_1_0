@@ -1,7 +1,6 @@
 <template>
-  <div class="home">
+  <div class="home">Home
     <ElButton type="danger" @click="onClick">Logout</ElButton>
-    <img alt="Vue logo" src="../assets/logo.png">
   </div>
 </template>
 
