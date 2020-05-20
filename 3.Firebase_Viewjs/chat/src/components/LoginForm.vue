@@ -3,7 +3,7 @@
         <h1 class="login-form-title">Live Chat</h1>
         <p class="login-form-description">
             Welcome to Live Chat! Please login to join.
-         </p>
+        </p>
         <ElForm
             :model="formData"
             :rules="rules"
@@ -83,7 +83,10 @@ export default {
     },
   }),
   computed: {
-    ...mapGetters('auth', ['loginInProgress']),
+    ...mapGetters('auth', ['loginInProgress', 'isLoggedIn']),
+  },
+  watch: {
+    isLoggedIn: 'redirectToHome',
   },
   methods: {
     ...mapActions('auth', ['login']),
@@ -92,6 +95,11 @@ export default {
         if (!isValid) return;
         this.login({ ...this.formData });
       });
+    },
+    redirectToHome(val) {
+      if (val) {
+        this.$router.push({ name: 'Home' });
+      }
     },
   },
 };
