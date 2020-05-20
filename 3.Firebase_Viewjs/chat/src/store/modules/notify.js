@@ -18,7 +18,6 @@ const notifyStore = {
   },
   actions: {
     loadMessage({ commit }, payload = {}) {
-      console.log(payload);
       commit(SHOW_NOTIFY, payload);
     },
   },

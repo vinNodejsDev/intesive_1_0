@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import authGuard from '@/guards/auth.guard';
 import firebase from '@/plugins/firebase';
-import router from '@/router';
 import auth from './modules/auth';
 import notify from './modules/notify';
 import user from './modules/user';
@@ -18,17 +18,18 @@ const store = new Vuex.Store({
   modules: {
     auth,
     notify,
+    user,
   },
 });
 
 firebase.auth().onAuthStateChanged((userData) => {
-  console.log('onAuthStateChanged', user);
-
   store.dispatch('setIsLoggedInState', Boolean(userData));
-  store.dispatch('setUserState', Boolean(userData));
-  if (user) {
-    router.push({ name: 'Home' });
-  }
+  store.dispatch('setUserState', userData);
+  // if (userData) {
+
+  // }
 });
+
+authGuard(store);
 
 export default store;
