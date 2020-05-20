@@ -5,7 +5,7 @@ const { USER } = mutations;
 const userStore = {
   namespaced: true,
   state: {
-    user: null,
+    user: {},
   },
   getters: {
     user: ({ user }) => user,

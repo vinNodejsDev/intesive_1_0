@@ -18,3 +18,13 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.home {
+  height: 100vh;
+  background-color: #dcb4f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
