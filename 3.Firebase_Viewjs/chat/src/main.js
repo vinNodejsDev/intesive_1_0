@@ -7,8 +7,6 @@ import '@/plugins/element-ui';
 
 Vue.config.productionTip = false;
 
-// authGuard();
-
 new Vue({
   router,
   store,
