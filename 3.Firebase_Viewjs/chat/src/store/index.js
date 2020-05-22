@@ -29,6 +29,7 @@ firebase.auth().onAuthStateChanged(async (userData) => {
 
   if (userData) {
     const token = await getUserIdToken();
+    console.log(token);
     localStorage.setItem(process.env.VUE_APP_LS_TOKEN_KEY, token);
   } else {
     localStorage.removeItem(process.env.VUE_APP_LS_TOKEN_KEY);
