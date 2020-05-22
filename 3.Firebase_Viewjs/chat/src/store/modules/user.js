@@ -12,13 +12,14 @@ const userStore = {
     fullName: ({ user }) => `${user.firstName || ''} ${user.lastName || ''}`,
   },
   mutations: {
-    [USER](state, obj) {
-      state.user = obj;
+    [USER](state, obg) {
+      state.user = obg;
     },
   },
   actions: {
     setUserState: {
       handler({ dispatch }, user) {
+        console.log(user);
         dispatch('getUser', user.email);
       },
       root: true,
