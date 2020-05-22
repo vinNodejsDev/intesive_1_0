@@ -43,7 +43,7 @@
                     Log In
                 </ElButton>
             </div>
-            <router-link :to="{name: 'SignUp '}">
+            <router-link :to="{name: 'SignUp'}">
                 <ElLink type="primary">Don't have account yet? Sign Up! </ElLink>
             </router-link>
         </ElForm>
