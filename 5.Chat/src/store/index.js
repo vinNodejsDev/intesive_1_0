@@ -29,9 +29,9 @@ firebase.auth().onAuthStateChanged(async (userData) => {
 
   if (userData) {
     const token = await getUserIdToken();
-    localStorage.setItem('vue_app_token', token);
+    localStorage.setItem(process.env.VUE_APP_LS_TOKEN_KEY, token);
   } else {
-    localStorage.removeItem('vue_app_token');
+    localStorage.removeItem(process.env.VUE_APP_LS_TOKEN_KEY);
   }
 });
 
