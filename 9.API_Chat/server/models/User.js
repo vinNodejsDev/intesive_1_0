@@ -19,7 +19,13 @@ const UserSchema = new mongoose.Schema({
   },
   city: {
     type: String 
-  }
+  },
+  chats: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Chat' 
+    }
+  ]
 });
 
 mongoose.model('User', UserSchema);
